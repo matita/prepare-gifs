@@ -67,17 +67,21 @@
                 var url = URL.createObjectURL(blob);
                 console.log('finished rendering', framesLoaded, 'frames');
 
+                downloadLink.innerHTML = '';
+
                 var a = document.createElement('a');
                 a.href = url;
                 a.target = '_blank';
                 a.download = 'scaled.gif';
+                a.innerHTML = 'Download scaled.gif';
+                downloadLink.appendChild(a);
+
+                var br = document.createElement('br');
+                downloadLink.appendChild(br);
 
                 var img = document.createElement('img')
                 img.src = url;
-                a.appendChild(img);
-
-                downloadLink.innerHTML = '';
-                downloadLink.appendChild(a);
+                downloadLink.appendChild(img);
             });
 
             return function (frame) {
